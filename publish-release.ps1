@@ -11,6 +11,9 @@ param(
 
 $ErrorActionPreference = "Stop"
 
+# Allow comma-separated string when invoked via: powershell -File publish-release.ps1 -ApkPaths "a,b"
+if ($ApkPaths.Count -eq 1 -and $ApkPaths[0] -match ",") { $ApkPaths = $ApkPaths[0] -split "," | ForEach-Object { $_.Trim() } }
+
 $cred = "protocol=https`nhost=github.com`n" | git credential fill
 $tok = ($cred | Select-String -Pattern '^password=(.+)$').Matches.Groups[1].Value
 if (-not $tok) { throw "No GitHub credential found. Push to GitHub once from this machine first." }
