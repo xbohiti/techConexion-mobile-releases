@@ -1,6 +1,6 @@
 # Publishes one or more APKs as a GitHub release in this repo.
 # Usage:
-#   .\publish-release.ps1 -Version 1.0.2 -ApkPaths "C:\path\to\app-arm64.apk","C:\path\to\app-armeabi.apk"
+#   .\publish-release.ps1 -Version 1.0.3 -ApkPaths "C:\path\to\app-arm64.apk","C:\path\to\app-armeabi.apk"
 # Requires: git credential (GitHub) already stored - i.e. you have pushed to GitHub from this machine before.
 param(
     [Parameter(Mandatory = $true)][string]$Version,
